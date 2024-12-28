@@ -1,2 +1,2 @@
-# zpi-zp41_appWEB-HryshchenkoYuliia-KPI-2025
-KPI, Zpi-zp41, Web-application design
+# zpi-zp41_appRECORD-HryshchenkoYuliia-KPI-2025
+KPI, Zpi-zp41, Laboratory report HTML document
