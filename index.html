@@ -15,8 +15,43 @@
           background-color: #f9f9f9;
         }
 
-        h1, h2, h3 {
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 20px;
+        }
+
+        .header .text {
             text-align: center;
+            flex: 3;
+        }
+
+        .header img {
+            flex: 1;
+            max-width: 150px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+        }
+
+        h1, h2, h3 {
+            margin: 5px 0;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            color: #777;
         }
     
         .container {
@@ -99,9 +134,14 @@
 
 <body>
 
-    <h1>ЗВІТИ З ЛАБОРАТОРНИХ РОБІТ</h1>
-    <h2>З ДИСЦИПЛІНИ "ПРОЕКТУВАННЯ WEB-ЗАСТОСУВАНЬ"</h2>
-    <h3>Студента Групи ЗПІ-зп41 Грищенко Юлії Іванівни</h3>
+    <div class="header">
+        <div class="text">
+          <h1>ЗВІТИ З ЛАБОРАТОРНИХ РОБІТ</h1>
+          <h2>З ДИСЦИПЛІНИ "ПРОЕКТУВАННЯ WEB-ЗАСТОСУВАНЬ"</h2>
+          <h3>Студента Групи ЗПІ-зп41 Грищенко Юлії Іванівни</h3>
+        </div>
+        <img src="MyPhotoForCV(White).jpg" alt="Фото студента">
+      </div>
 
     <div class="container">
         <div class="tabs">
