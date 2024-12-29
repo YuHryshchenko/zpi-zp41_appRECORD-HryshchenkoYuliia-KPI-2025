@@ -3,9 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Laboratory report HTML document</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: #f9f9f9;
+        }
+    
+        .container {
+          display: flex;
+          flex-direction: column;
+          width: 80%;
+          margin-top: 20px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          background-color: #fff;
+        }
+    
+        .tabs {
+          display: flex;
+          border-bottom: 1px solid #ccc;
+        }
+    
+        .tab {
+          padding: 10px 20px;
+          cursor: pointer;
+          flex: 1;
+          text-align: center;
+          border-right: 1px solid #ccc;
+          transition: background-color 0.3s;
+        }
+    
+        .tab:last-child {
+          border-right: none;
+        }
+    
+        .tab.active {
+          background-color: #ffcccc;
+          font-weight: bold;
+        }
+    
+        .content {
+          display: none;
+          padding: 20px;
+        }
+    
+        .content.active {
+          display: block;
+        }
+    
+        .sidebar {
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+          border-right: 1px solid #ccc;
+        }
+    
+        .sidebar button {
+          margin: 10px 0;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background-color: #f0f0f0;
+          cursor: pointer;
+          text-align: left;
+        }
+    
+        .sidebar button:hover {
+          background-color: #e0e0e0;
+        }
+    
+        .main {
+          flex: 1;
+          padding: 20px;
+        }
+    
+        .layout {
+          display: flex;
+        }
+      </style>
 </head>
+
 <body>
+
+    <div class="container">
+        <div class="tabs">
+          <div class="tab active" data-target="lab1">Лабораторна робота № 1.1</div>
+          <div class="tab" data-target="lab2">Лабораторна робота № 1.2</div>
+          <div class="tab" data-target="lab3">Лабораторна робота № 2.1</div>
+          <div class="tab" data-target="lab4">Лабораторна робота № 2.2</div>
+        </div>
+    
+        <div class="layout">
+          <div class="sidebar">
+            <button>Опис предметного середовища</button>
+            <button>Тема, Мета</button>
+            <button>Структура документа</button>
+            <button>HTML-код ТАБЛИЦЬ</button>
+            <button>HTML-код ФОРМИ</button>
+            <button>HTML-код ЗОБРАЖЕННЯ</button>
+            <button>Висновки</button>
+          </div>
+    
+          <div class="main">
+            <div id="lab1" class="content active">Місце для Лабораторної роботи №1.1</div>
+            <div id="lab2" class="content">Місце для Лабораторної роботи №1.2</div>
+            <div id="lab3" class="content">Місце для Лабораторної роботи №2.1</div>
+            <div id="lab4" class="content">Місце для Лабораторної роботи №2.2</div>
+          </div>
+        </div>
+      </div>
+    
+      <script>
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.content');
+    
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+    
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.target).classList.add('active');
+          });
+        });
+      </script>
     
 </body>
 </html>
