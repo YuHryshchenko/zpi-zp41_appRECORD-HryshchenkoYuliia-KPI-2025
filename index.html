@@ -58,10 +58,14 @@
         }
     
         .sidebar {
-          display: flex;
+          display: none;
           flex-direction: column;
           padding: 10px;
           border-right: 1px solid #ccc;
+        }
+    
+        .sidebar.active {
+          display: flex;
         }
     
         .sidebar button {
@@ -97,24 +101,67 @@
           <div class="tab" data-target="lab2">Лабораторна робота № 1.2</div>
           <div class="tab" data-target="lab3">Лабораторна робота № 2.1</div>
           <div class="tab" data-target="lab4">Лабораторна робота № 2.2</div>
+          <div class="tab" data-target="lab5">Лабораторна робота № 3.1</div>
+          <div class="tab" data-target="lab6">Лабораторна робота № 3.2</div>
         </div>
     
         <div class="layout">
-          <div class="sidebar">
-            <button>Опис предметного середовища</button>
-            <button>Тема, Мета</button>
-            <button>Структура документа</button>
-            <button>HTML-код ТАБЛИЦЬ</button>
-            <button>HTML-код ФОРМИ</button>
-            <button>HTML-код ЗОБРАЖЕННЯ</button>
-            <button>Висновки</button>
+          <div class="sidebar-container">
+            <div id="sidebar-lab1" class="sidebar active">
+              <button data-section="section1">Опис предметного середовища</button>
+              <button data-section="section2">Тема, Мета</button>
+              <button data-section="section3">Структура документа</button>
+            </div>
+            <div id="sidebar-lab2" class="sidebar">
+              <button data-section="section1">HTML-код ТАБЛИЦЬ</button>
+              <button data-section="section2">HTML-код ФОРМИ</button>
+              <button data-section="section3">HTML-код ЗОБРАЖЕННЯ</button>
+            </div>
+            <div id="sidebar-lab3" class="sidebar">
+              <button data-section="section1">Теоретична частина</button>
+              <button data-section="section2">Практична частина</button>
+            </div>
+            <div id="sidebar-lab4" class="sidebar">
+              <button data-section="section1">Аналіз результатів</button>
+              <button data-section="section2">Висновки</button>
+            </div>
+            <div id="sidebar-lab5" class="sidebar">
+              <button data-section="section1">Огляд методів</button>
+              <button data-section="section2">Застосування</button>
+            </div>
+            <div id="sidebar-lab6" class="sidebar">
+              <button data-section="section1">Деталі реалізації</button>
+              <button data-section="section2">Тестування</button>
+            </div>
           </div>
     
           <div class="main">
-            <div id="lab1" class="content active">Місце для Лабораторної роботи №1.1</div>
-            <div id="lab2" class="content">Місце для Лабораторної роботи №1.2</div>
-            <div id="lab3" class="content">Місце для Лабораторної роботи №2.1</div>
-            <div id="lab4" class="content">Місце для Лабораторної роботи №2.2</div>
+            <div id="lab1" class="content active">
+              <div id="section1">Опис предметного середовища</div>
+              <div id="section2">Тема, Мета</div>
+              <div id="section3">Структура документа</div>
+            </div>
+            <div id="lab2" class="content">
+              <div id="section1">HTML-код ТАБЛИЦЬ</div>
+              <div id="section2">HTML-код ФОРМИ</div>
+              <div id="section3">HTML-код ЗОБРАЖЕННЯ</div>
+            </div>
+            <div id="lab3" class="content">
+              <div id="section1">Теоретична частина</div>
+              <div id="section2">Практична частина</div>
+            </div>
+            <div id="lab4" class="content">
+              <div id="section1">Аналіз результатів</div>
+              <div id="section2">Висновки</div>
+            </div>
+            <div id="lab5" class="content">
+              <div id="section1">Огляд методів</div>
+              <div id="section2">Застосування</div>
+            </div>
+            <div id="lab6" class="content">
+              <div id="section1">Деталі реалізації</div>
+              <div id="section2">Тестування</div>
+            </div>
           </div>
         </div>
       </div>
@@ -122,14 +169,26 @@
       <script>
         const tabs = document.querySelectorAll('.tab');
         const contents = document.querySelectorAll('.content');
+        const sidebars = document.querySelectorAll('.sidebar');
     
         tabs.forEach(tab => {
           tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));
             contents.forEach(c => c.classList.remove('active'));
+            sidebars.forEach(s => s.classList.remove('active'));
     
             tab.classList.add('active');
             document.getElementById(tab.dataset.target).classList.add('active');
+            document.getElementById(`sidebar-${tab.dataset.target}`).classList.add('active');
+          });
+        });
+    
+        document.querySelectorAll('.sidebar button').forEach(button => {
+          button.addEventListener('click', () => {
+            const mainContent = button.closest('.content');
+            const targetSection = button.dataset.section;
+            mainContent.querySelectorAll('div[id^="section"]').forEach(section => section.style.display = 'none');
+            mainContent.querySelector(`#${targetSection}`).style.display = 'block';
           });
         });
       </script>
